@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Diagnosis Results</h2>
+<p><strong>Your input:</strong> {{ input_text }}</p>
+<p><strong>HPO terms:</strong> {{ patient_hpo_terms }}</p>
+
+<h3>Top Matches</h3>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Disease</th>
+    <th>Score</th>
+  </tr>
+  {% for disease, score in top_results %}
+  <tr>
+    <td>{{ disease }}</td>
+    <td>{{ "%.4f"|format(score) }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% if is_rare %}
+  <p style="color:red;">
+    The top match is below our confidence threshold, indicating a possibility of a rare or novel disease.
+  </p>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Go back</a>
+{% endblock %}

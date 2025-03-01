@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Diagnosis History</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Time</th>
+    <th>Input</th>
+    <th>HPO Terms</th>
+    <th>Top Results</th>
+    <th>Rare?</th>
+  </tr>
+  {% for diag in diagnoses %}
+  <tr>
+    <td>{{ diag.created_at }}</td>
+    <td>{{ diag.input_text }}</td>
+    <td>{{ diag.hpo_terms }}</td>
+    <td>{{ diag.results }}</td>
+    <td>{{ diag.is_rare }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

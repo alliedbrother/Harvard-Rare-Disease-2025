@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome, {{ username }}!</h2>
+<p>Please enter your symptoms below (plain English):</p>
+<form method="POST" action="{{ url_for('diagnose') }}">
+  <textarea name="symptoms" rows="5" cols="50"></textarea><br><br>
+  <button type="submit">Diagnose</button>
+</form>
+{% endblock %}
