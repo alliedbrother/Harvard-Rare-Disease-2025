@@ -46,7 +46,7 @@ app.logger.setLevel(logging.INFO)
 # -------------------------------------------------------------------
 # 4. Initialize DB and Phrank at first request
 # -------------------------------------------------------------------
-@app.before_first_request
+@app.before_request
 def create_tables_and_init():
     db.create_all()  # Creates tables if they don't exist
     app.logger.info("Database tables ensured.")
@@ -228,4 +228,4 @@ def server_error(e):
 # -------------------------------------------------------------------
 if __name__ == '__main__':
     # For production, use gunicorn or another WSGI server
-    app.run(debug=False, host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=8001)
